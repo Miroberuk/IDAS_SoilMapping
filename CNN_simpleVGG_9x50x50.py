@@ -37,6 +37,8 @@ from sklearn.preprocessing import MultiLabelBinarizer
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import classification_report
 
+from skimage import io
+
 ##
 
 # Hyperparameters
@@ -74,7 +76,8 @@ random.shuffle(imagePaths)
 # loop over the input images
 for imagePath in imagePaths:
 
-	image = cv2.imread(imagePath)
+#	image = cv2.imread(imagePath)
+	image = io.imread(imagePath)
 	try:
 		#image = cv2.resize(image, (50,50))
 		image.flatten()
@@ -125,16 +128,16 @@ model.add(Conv2D(filters=256, kernel_size=(3,3), padding="same", activation="rel
 model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
 
 #Convolutional Layers 4 (Conv 4-1, 4-2, 4-3, Pooling)
-model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
+#model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
 # model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
 # model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
+#model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
 
 #Convolutional Layers 5 (Conv 5-1, 5-2, 5-3, Pooling)
-model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
+#model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
 # model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
 # model.add(Conv2D(filters=512, kernel_size=(3,3), padding="same", activation="relu"))
-model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
+#model.add(MaxPool2D(pool_size=(2,2),strides=(2,2)))
 
 model.add(Flatten())
 model.add(Dense(units=4096,activation="relu"))
